@@ -8,7 +8,7 @@ const activeConsultations = {};
 // Об'єкт для зворотного зв'язку: { consultantChatId: userChatId }
 const consultantToUserMap = {};
 
-const sendMainMenu = (chatId) => {
+export const sendMainMenu = (chatId) => {
     const opts = {
         reply_markup: {
             inline_keyboard: [

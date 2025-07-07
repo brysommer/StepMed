@@ -1,4 +1,4 @@
-import { bot } from "../app.js";
+import { bot, sendMainMenu } from "../app.js";
 import { dataBot } from "../values.js";
 
 const handleBookingRequest = async (userChatId, serviceCallbackData, userName, originalMessageId) => {
