@@ -286,7 +286,15 @@ bot.on('message', async (msg) => {
     if (activeConsultations[chatId]) {
         const consultantId = activeConsultations[chatId];
         try {
-            await bot.sendMessage(consultantId, `*Клієнт (${msg.from.first_name || 'Користувач'}):*\n${text}`, { parse_mode: 'Markdown' });
+            await bot.sendMessage(consultantId, 
+                `*Клієнт (${msg.from.first_name || 'Користувач'}):*\n${text}`, 
+                
+                { 
+                parse_mode: 'Markdown' , 
+                reply_markup: {
+                inline_keyboard: [[{ text: 'Завершити консультацію 🔚', callback_data: 'end_consultation' }]]
+                }
+            });
         } catch (error) {
             console.error(`Помилка пересилання повідомлення від користувача ${chatId} до консультанта ${consultantId}: ${error.message}`);
             await bot.sendMessage(chatId, 'Вибачте, не вдалося переслати ваше повідомлення консультанту. Можливо, консультація вже завершена або виникла помилка.');
